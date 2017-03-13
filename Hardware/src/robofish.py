@@ -74,9 +74,9 @@ class Robot(threading.Thread):
     def count(self):
         while self.flg:
             while GPIO.input( HALL_SENSOR ):
-                pass
+                if not self.flg:return
             while not GPIO.input( HALL_SENSOR ):
-                pass
+                if not self.flg:return
             if self.direction == FORWARD:
                 self.c += 1
             elif self.direction == BACK:
